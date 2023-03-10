@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Paper } from '@mui/material'
+import { Paper, useTheme } from '@mui/material'
 import React, { useRef } from 'react'
 import { useAppDispatch, useAppSelector } from 'app/store'
 import { addElement, deleteElement, selectElement } from 'app/store/store'
@@ -18,7 +18,7 @@ interface DragBlockPrps {
 }
 
 function DragBlock ({ children, width, height, id }: DragBlockPrps): JSX.Element {
-  // const theme = useTheme()
+  const theme = useTheme()
   const dndRef = useRef(null)
   const dispatch = useAppDispatch()
   const selectedElementId = useAppSelector(state => state.elements.selectedElementId)
@@ -55,6 +55,11 @@ function DragBlock ({ children, width, height, id }: DragBlockPrps): JSX.Element
     >
       <StyledPaper
         variant="elevation"
+        sx={{
+          padding: theme.spacing(1),
+          width: width != null ? `${width}px` : '100%',
+          height: height != null ? `${height}px` : '100%'
+        }}
       >
         {children}
       </StyledPaper>

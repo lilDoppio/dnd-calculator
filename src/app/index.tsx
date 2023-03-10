@@ -3,7 +3,6 @@ import CalculatorDigits from 'widgets/calculator-digits/digits'
 import CalculatorOutput from 'widgets/calculator-output/output'
 import CalculatorSubmit from 'widgets/calculator-submit/submit'
 import CalculatorOperators from 'widgets/calulator-operators/operators'
-import DragBlock from 'features/dragBlock/ui'
 import HorizontalDivider from 'shared/ui/divider/horizontal/divider'
 import VerticalDivider from 'shared/ui/divider/vaertical/divider'
 import './index.css'
@@ -29,21 +28,13 @@ function App (): JSX.Element {
       style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
       <div style={{ height: '448px', width: '243px' }}>
-        <DragBlock id='1'>
-          <CalculatorOutput/>
-        </DragBlock>
+        <CalculatorOutput/>
         <HorizontalDivider/>
-        <DragBlock id='2'>
-          <CalculatorOperators/>
-        </DragBlock>
+        <CalculatorOperators/>
         <HorizontalDivider/>
-        <DragBlock id='3'>
-          <CalculatorDigits/>
-        </DragBlock>
+        <CalculatorDigits/>
         <HorizontalDivider/>
-        <DragBlock id='4'>
-          <CalculatorSubmit/>
-        </DragBlock>
+        <CalculatorSubmit/>
       </div>
       <VerticalDivider/>
       <div

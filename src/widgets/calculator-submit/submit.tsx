@@ -1,13 +1,12 @@
-import { Paper, useTheme } from '@mui/material'
 import React from 'react'
+import DragBlock from 'features/dragBlock/ui'
 import Toggle, { toggleVariantType } from 'shared/ui/toggle/toggle'
 
 function CalculatorSubmit (): JSX.Element {
-  const theme = useTheme()
   return (
-    <Paper elevation={0} sx={{ height: '64px', padding: theme.spacing(1) }}>
+    <DragBlock height={64} width={232} id='4'>
       <Toggle variant={toggleVariantType.contained}>=</Toggle>
-    </Paper>
+    </DragBlock>
   )
 }
 

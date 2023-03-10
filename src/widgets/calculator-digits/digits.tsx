@@ -1,11 +1,11 @@
-import { Grid, Paper, useTheme } from '@mui/material'
+import { Grid } from '@mui/material'
 import React from 'react'
+import DragBlock from 'features/dragBlock/ui'
 import Toggle, { toggleVariantType } from 'shared/ui/toggle/toggle'
 
 export default function CalculatorDigits (): JSX.Element {
-  const theme = useTheme()
   return (
-    <Paper elevation={0} sx={{ height: '216px', padding: theme.spacing(1) }}>
+    <DragBlock width={232} height={216} id='3'>
           <Grid container spacing={2} height='calc(100% + 8px)'>
             <Grid item xs={4}>
               <Toggle variant={toggleVariantType.outlined}>7</Toggle>
@@ -41,6 +41,6 @@ export default function CalculatorDigits (): JSX.Element {
               <Toggle variant={toggleVariantType.outlined}>,</Toggle>
             </Grid>
           </Grid>
-    </Paper>
+    </DragBlock>
   )
 }

@@ -1,13 +1,12 @@
-import { Paper, useTheme } from '@mui/material'
 import React from 'react'
+import DragBlock from 'features/dragBlock/ui'
 import Input from 'shared/ui/input/input'
 
 function CalculatorOutput (): JSX.Element {
-  const theme = useTheme()
   return (
-      <Paper elevation={0} sx={{ height: '52px', padding: theme.spacing(1) }}>
-        <Input></Input>
-      </Paper>
+    <DragBlock width={232} height={52} id='1'>
+      <Input></Input>
+    </DragBlock>
   )
 }
 
