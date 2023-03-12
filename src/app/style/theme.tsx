@@ -2,6 +2,18 @@ import { createTheme } from '@mui/material'
 
 export const rootTheme = createTheme({
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          '&.MuiTypography-body1': {
+            fontSize: '14px'
+          },
+          '&.MuiTypography-body2': {
+            fontSize: '12px'
+          }
+        }
+      }
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {

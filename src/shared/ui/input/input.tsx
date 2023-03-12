@@ -1,13 +1,30 @@
 import OutlinedInput from '@mui/material/OutlinedInput'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Input (): JSX.Element {
+interface InputPorps {
+  value: string
+}
+
+function Input ({ value }: InputPorps): JSX.Element {
+  const [fontSize, setFontSize] = useState(36)
+
+  useEffect(() => {
+    if (value.length >= 17) {
+      setFontSize(16)
+    } else if (value.length > 8) {
+      setFontSize(33 - value.length)
+    } else {
+      setFontSize(36)
+    }
+  }, [value])
+
   return (
     <OutlinedInput
-      value='0'
+      value={value}
       readOnly
       sx={{
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize: `${fontSize}px`
       }}
     />
   )

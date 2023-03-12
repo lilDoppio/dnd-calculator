@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import calculatorReducer from './store'
+import calculatorReducer from './calculator'
+import constructorReducer from './constructor'
 
 const store = configureStore({
   reducer: {
-    elements: calculatorReducer
+    elements: constructorReducer,
+    calculator: calculatorReducer
   }
 })
 

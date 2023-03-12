@@ -1,6 +1,10 @@
-// import { useTheme } from '@mui/material'
 import Button from '@mui/material/Button'
 import React from 'react'
+
+export interface GridToggle {
+  sx: number
+  label: string
+}
 
 export enum toggleVariantType {
   text = 'text',
@@ -11,16 +15,15 @@ export enum toggleVariantType {
 interface IToggle {
   children: string
   variant: toggleVariantType
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onClick?: () => {}
 }
 
-function Toggle ({ children, variant }: IToggle): JSX.Element {
-  // const theme = useTheme()
+function Toggle ({ children, variant, onClick }: IToggle): JSX.Element {
   return (
     <Button
       variant={variant}
-      sx={{
-        pointerEvents: 'none'
-      }}
+      onClick={onClick}
     >
       {children}
     </Button>
