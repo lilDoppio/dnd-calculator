@@ -80,12 +80,15 @@ export const calculatorSlice = createSlice({
         state.operation = null
       }
     },
-    setOutput: (state) => {
+    restCalculator: (state) => {
       state.output = '0'
+      state.firstNumber = ''
+      state.secondNumber = ''
+      state.operation = null
     },
   }
 })
 
-export const { addDigit, addOperation, operationConclusion, setOutput } = calculatorSlice.actions
+export const { addDigit, addOperation, operationConclusion, restCalculator } = calculatorSlice.actions
 
 export default calculatorSlice.reducer

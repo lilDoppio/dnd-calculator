@@ -5,7 +5,7 @@ import { useAppDispatch } from 'app/store'
 import { setActive } from 'app/store/constructor'
 import ConstructionPicture from 'shared/icons/construction'
 import EyePicture from 'shared/icons/eye'
-import { setOutput } from 'app/store/calculator'
+import { restCalculator } from 'app/store/calculator'
 import ToggleSwitcher from 'shared/ui/switch/switch'
 
 function ModeSwitcher (): JSX.Element {
@@ -18,7 +18,7 @@ function ModeSwitcher (): JSX.Element {
 
   const onClick = (value: boolean): any => {
     dispatch(setActive(value))
-    dispatch(setOutput())
+    dispatch(restCalculator())
   }
 
   return (
