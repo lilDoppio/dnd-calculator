@@ -1,6 +1,28 @@
 import { createTheme } from '@mui/material'
+const paletteTheme = createTheme({
+  palette: {
+    text: {
+      primary: '#000000',
+      secondary: '#ffffff'
+    },
+    primary: {
+      dark: '#6B7280',
+      main: '#5D5FEF',
+      light: '#F0F9FF'
+    },
+    secondary: {
+      dark: '#C4C4C4',
+      main: '#E2E3E5',
+      light: '#F3F4F6'
+    }
+  },
+  spacing: [0, 4, 8, 12],
+  typography: {
+    fontFamily: 'Inter'
+  }
+})
 
-export const rootTheme = createTheme({
+export const rootTheme = createTheme(paletteTheme, {
   components: {
     MuiTypography: {
       styleOverrides: {
@@ -18,13 +40,14 @@ export const rootTheme = createTheme({
       styleOverrides: {
         root: {
           input: {
-            textAlign: 'right'
+            textAlign: 'right',
+            cursor: 'default'
           },
           height: '100%',
           border: 'none',
           fontWeight: '800',
           fontSize: '36px',
-          backgroundColor: '#F3F4F6',
+          backgroundColor: paletteTheme.palette.secondary.light,
           lineHeight: '44px',
           borderRadius: '6px',
           '& .MuiOutlinedInput-notchedOutline': {
@@ -45,9 +68,9 @@ export const rootTheme = createTheme({
           height: '100%',
           minWidth: 'min-content',
           borderRadius: '6px',
-          border: '1px solid #E2E3E5',
+          border: `1px solid ${paletteTheme.palette.secondary.main}`,
           '&:hover': {
-            border: '2px solid #5D5FEF',
+            border: `2px solid ${paletteTheme.palette.primary.main}`,
             backgroundColor: 'transparent'
           }
         }
@@ -56,38 +79,53 @@ export const rootTheme = createTheme({
         {
           props: { variant: 'contained' },
           style: {
-            color: '#ffffff',
+            color: paletteTheme.palette.text.secondary,
             '&:hover': {
-              backgroundColor: '#5D5FEF'
+              backgroundColor: paletteTheme.palette.primary.main
             }
           }
         },
         {
           props: { variant: 'outlined' },
           style: {
-            color: '#000000'
+            color: paletteTheme.palette.text.primary
           }
         }
       ]
-    }
-  },
-  palette: {
-    text: {
-      primary: '#000000',
-      secondary: '#ffffff'
     },
-    primary: {
-      main: '#5D5FEF',
-      light: '#F0F9FF'
+    MuiToggleButtonGroup: {
+      styleOverrides: {
+        root: {
+          '& .MuiToggleButtonGroup-grouped': {
+            margin: paletteTheme.spacing(0),
+            border: 0,
+            fontWeight: '500',
+            color: paletteTheme.palette.text.primary,
+            '&.MuiToggleButton-standard': {
+              borderRadius: '5px',
+              backgroundColor: paletteTheme.palette.secondary.light
+            },
+            '&.Mui-selected': {
+              border: `1px solid ${paletteTheme.palette.secondary.main}`,
+              backgroundColor: paletteTheme.palette.text.secondary,
+              '& > svg': {
+                '& path': {
+                  stroke: paletteTheme.palette.primary.main
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    secondary: {
-      dark: '#C4C4C4',
-      main: '#E2E3E5',
-      light: '#F3F4F6'
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          '&.MuiPaper-elevation3': {
+            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1)'
+          }
+        }
+      }
     }
-  },
-  spacing: [0, 4, 8, 12],
-  typography: {
-    fontFamily: 'Inter'
   }
 })

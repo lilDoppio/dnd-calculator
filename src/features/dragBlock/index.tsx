@@ -1,2 +1,2 @@
-export * from './ui'
+export * from './dragBlock'
 // export * from '../../app/store/model'

@@ -15,7 +15,6 @@ export enum toggleVariantType {
 interface IToggle {
   children: string
   variant: toggleVariantType
-  // eslint-disable-next-line @typescript-eslint/ban-types
   onClick?: () => {}
 }
 

@@ -3,21 +3,18 @@
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "@feature-sliced",
-        "plugin:react/jsx-runtime",
-        "plugin:react/recommended",
-        "standard-with-typescript"
-    ],
+    "extends": "plugin:react/recommended",
     "overrides": [
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
     "plugins": [
-        "react"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
     }

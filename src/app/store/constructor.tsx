@@ -43,7 +43,7 @@ const initialState: ElementsState = {
   selectedElementId: null,
   overElementId: null,
   deleteElementId: null,
-  active: false
+  active: true
 }
 
 export const constructorSlice = createSlice({
@@ -53,21 +53,14 @@ export const constructorSlice = createSlice({
     addElement: (state, action: PayloadAction<any>) => {
       const inList = Boolean(state.elements.filter(element => element.id === action.payload.selectedId).length)
       const [selectedElement] = calculatorElements.filter(element => element.id === action.payload.selectedId)
-      if (!inList) {
-        const isOverElement = Boolean(action.payload.overId)
-        if (isOverElement) {
-          state.elements = state.elements.filter(element => element.id !== action.payload.selectedId)
-          const overElementIndex = (element: any): any => element.id === action.payload.overId
-          state.elements.splice(state.elements.findIndex(overElementIndex), 0, selectedElement)
-        } else {
-          state.elements.push(selectedElement)
-        }
+      const isOverElement = action.payload.overId
+      if (isOverElement) {
+        state.elements = state.elements.filter(element => element.id !== action.payload.selectedId)
+        const overElementIndex = (element: any): any => element.id === action.payload.overId
+        state.elements.splice(state.elements.findIndex(overElementIndex), 0, selectedElement)
       } else {
-        const isOverElement = Boolean(action.payload.overId)
-        if (isOverElement) {
-          state.elements = state.elements.filter(element => element.id !== action.payload.selectedId)
-          const overElementIndex = (element: any): any => element.id === action.payload.overId
-          state.elements.splice(state.elements.findIndex(overElementIndex), 0, selectedElement)
+        if (!inList) {
+          state.elements.push(selectedElement)
         }
       }
     },
@@ -76,6 +69,7 @@ export const constructorSlice = createSlice({
     },
     setOverElement: (state, action: PayloadAction<any>) => {
       state.overElementId = action.payload
+      console.log('state.overElementId', state.overElementId)
     },
     deleteElement: (state, action: PayloadAction<any>) => {
       state.elements = state.elements.filter(element => element.id !== action.payload)

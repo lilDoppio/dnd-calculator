@@ -2,7 +2,7 @@ import { Paper } from '@mui/material'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from 'app/store'
 import { operationConclusion } from 'app/store/calculator'
-import DragBlock from 'features/dragBlock/ui'
+import DragBlock from 'features/dragBlock/dragBlock'
 import Toggle, { toggleVariantType } from 'shared/ui/toggle/toggle'
 
 interface SubmitProps {

@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from 'app/store'
 import { addOperation, operationConclusion } from 'app/store/calculator'
-import DragBlock from 'features/dragBlock/ui'
+import DragBlock from 'features/dragBlock/dragBlock'
 import Toggle, { toggleVariantType } from 'shared/ui/toggle/toggle'
 import { gridToggles } from './consts'
 
@@ -35,9 +35,7 @@ function CalculatorOperators ({ inConstructor }: OperatorsProps): JSX.Element {
         container
         spacing={2}
         height='56px'
-        sx={{
-          pointerEvents: inList && !inConstructor ? 'all' : 'none'
-        }}
+        sx={{ pointerEvents: inList && !inConstructor ? 'all' : 'none' }}
       >
       {gridToggles.map(toggle => {
         return (

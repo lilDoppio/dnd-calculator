@@ -1,12 +1,4 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-// import React from 'react'
-
-// enum CalculatorOperation {
-//   '/' = 1,
-//   '*' = 2,
-//   '-' = 3,
-//   '+' = 4
-// }
 
 export type CalculatorOperation = '+' | '-' | '/' | 'x' | null
 
@@ -31,28 +23,35 @@ export const calculatorSlice = createSlice({
   initialState,
   reducers: {
     addDigit: (state, action: PayloadAction<string>) => {
-      if (Boolean(state.firstNumber) && Boolean(state.operation)) {
-        state.secondNumber = state.secondNumber.concat(action.payload)
+      if (state.firstNumber && state.operation) {
+        if (state.secondNumber === '0') {
+          state.secondNumber = action.payload
+        } else {
+          state.secondNumber = state.secondNumber.concat(action.payload)
+        }
         state.output = state.secondNumber
       } else {
-        state.firstNumber = state.firstNumber.concat(action.payload)
+        if (state.firstNumber === '0') {
+          state.firstNumber = action.payload
+        } else {        
+          state.firstNumber = state.firstNumber.concat(action.payload)
+        }
         state.output = state.firstNumber
       }
     },
     addOperation: (state, action: PayloadAction<CalculatorOperation>) => {
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!state.firstNumber) {
         state.firstNumber = state.lastOutput
       }
-      state.operation = action.payload
+      if (state.firstNumber) {
+        state.operation = action.payload
+      }
     },
     operationConclusion: (state) => {
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (state.operation && state.firstNumber && state.secondNumber) {
         const firstNumber = parseFloat(state.firstNumber.replace(',', '.'))
         const secondNumber = parseFloat(state.secondNumber.replace(',', '.'))
 
-        console.log(firstNumber, state.operation, secondNumber)
         let newNumber = ''
         if (state.operation === '+') {
           newNumber = (firstNumber + secondNumber).toString()
@@ -70,9 +69,7 @@ export const calculatorSlice = createSlice({
             newNumber = (firstNumber / secondNumber).toString()
           }
         }
-        console.log('newNumber', newNumber)
         if (newNumber.split('.')[1]?.length > 15) {
-          console.log('newNumber', newNumber.split('.')[1])
           state.output = (parseFloat(newNumber).toFixed(15)).toString()
         } else {
           state.output = newNumber
@@ -82,10 +79,13 @@ export const calculatorSlice = createSlice({
         state.secondNumber = ''
         state.operation = null
       }
-    }
+    },
+    setOutput: (state) => {
+      state.output = '0'
+    },
   }
 })
 
-export const { addDigit, addOperation, operationConclusion } = calculatorSlice.actions
+export const { addDigit, addOperation, operationConclusion, setOutput } = calculatorSlice.actions
 
 export default calculatorSlice.reducer

@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from 'app/store'
 import { addDigit } from 'app/store/calculator'
-import DragBlock from 'features/dragBlock/ui'
+import DragBlock from 'features/dragBlock/dragBlock'
 import Toggle, { toggleVariantType } from 'shared/ui/toggle/toggle'
 import { gridToggles } from './consts'
 interface DigitsProps {
@@ -33,9 +33,7 @@ export default function CalculatorDigits ({ inConstructor }: DigitsProps): JSX.E
         container
         spacing={2}
         height='calc(100% + 8px)'
-        sx={{
-          pointerEvents: inList && !inConstructor ? 'all' : 'none'
-        }}
+        sx={{ pointerEvents: inList && !inConstructor ? 'all' : 'none' }}
       >
         {gridToggles.map(toggle => {
           return (

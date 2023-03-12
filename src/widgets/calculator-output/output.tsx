@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppSelector } from 'app/store'
-import DragBlock from 'features/dragBlock/ui'
-import Input from 'shared/ui/input/input'
+import DragBlock from 'features/dragBlock/dragBlock'
+import Output from 'features/output/output'
 
 interface OutputProps {
   inConstructor: boolean
@@ -19,7 +19,7 @@ function CalculatorOutput ({ inConstructor }: OutputProps): JSX.Element {
       inConstructor={inConstructor}
       id='1'
     >
-      <Input value={inConstructor ? '' : output}></Input>
+      <Output value={inConstructor ? '' : output}/>
     </DragBlock>
   )
 }
